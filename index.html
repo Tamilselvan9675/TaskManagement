@@ -11,3 +11,9 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+<script>
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+</script>
