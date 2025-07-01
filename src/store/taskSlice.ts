@@ -17,10 +17,16 @@ const initialState: TaskState = {
 
 
 export const fetchQuote = createAsyncThunk('task/fetchQuote', async () => {
-  const res = await fetch('https://api.quotable.io/random');
-  const data = await res.json();
-  return data.content;
+  try {
+    const res = await fetch('https://api.quotable.io/random');
+    const data = await res.json();
+    return data.content;
+  } catch {
+  console.error('Quote API failed, using static fallback.');
+  return "Stay positive, work hard, and make it happen.";
+}
 });
+
 
 const taskSlice = createSlice({
   name: 'task',
